@@ -5,13 +5,6 @@ return {
   },
 
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-
-  {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VeryLazy",
     branch = "v3.x",
@@ -59,10 +52,6 @@ return {
     end,
   },
 
-  {
-    "Exafunction/codeium.vim",
-    lazy = false,
-  },
   -- {
   --   "christoomey/vim-tmux-navigator",
   --   lazy = false,
