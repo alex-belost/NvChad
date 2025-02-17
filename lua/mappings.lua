@@ -70,6 +70,7 @@ map("t", "<C-f>", function()
 end, { desc = "Toogle Terminal Float" })
 
 -- Basic
+vim.keymap.set('n', '<leader>co', '<cmd>OrganizeImports<CR>', { noremap = true, silent = true, desc = "Organize Imports" })
 
 map("i", "jj", "<ESC>")
 map({ "n" }, "<ESC>", "<cmd>noh<cr>")

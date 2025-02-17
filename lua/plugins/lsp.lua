@@ -53,5 +53,29 @@ return {
     --     client.server_capabilities.diagnosticProvider = false -- Отключает диагностику от eslint-lsp
     --   end,
     -- }
+    lspconfig.angularls.setup {
+      cmd = {
+        "node",
+        "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules/@angular/language-server/index.js",
+        "--ngProbeLocations",
+        "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
+        "--tsProbeLocations",
+        "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
+        "--stdio",
+      },
+      on_new_config = function(new_config)
+        new_config.cmd = {
+          "node",
+          "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules/@angular/language-server/index.js",
+          "--ngProbeLocations",
+          "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
+          "--tsProbeLocations",
+          "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
+          "--stdio",
+        }
+      end,
+      filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+      root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
+    }
   end,
 }
