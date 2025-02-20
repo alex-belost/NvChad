@@ -6,16 +6,16 @@ return {
       lua = { "stylua" },
       css = { "prettier" },
       html = { "prettier" },
-       javascript = { "prettier" },
+      javascript = { "prettier" },
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
       javascriptreact = { "prettier" },
     },
 
-    format_on_save = {
-      -- These options will be passed to conform.format()
-      timeout_ms = 500,
-      lsp_fallback = true,
-    },
+    -- format_on_save = {
+    --   -- These options will be passed to conform.format()
+    --   timeout_ms = 500,
+    --   lsp_fallback = true,
+    -- },
   },
 }

@@ -53,29 +53,39 @@ return {
     --     client.server_capabilities.diagnosticProvider = false -- Отключает диагностику от eslint-lsp
     --   end,
     -- }
-    lspconfig.angularls.setup {
-      cmd = {
-        "node",
-        "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules/@angular/language-server/index.js",
-        "--ngProbeLocations",
-        "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
-        "--tsProbeLocations",
-        "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
-        "--stdio",
+    -- lspconfig.angularls.setup {
+    --   cmd = {
+    --     "node",
+    --     "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules/@angular/language-server/index.js",
+    --     "--stdio",
+    --     "--ngProbeLocations",
+    --     "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules",
+    --     "--tsProbeLocations",
+    --     "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules",
+    --   },
+    --   root_dir = require("lspconfig.util").root_pattern("angular.json", "package.json"),
+    -- }
+
+    -- lspconfig.angularls.setup {
+    --   cmd = {
+    --     "node",
+    --     "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules/@angular/language-server/index.js",
+    --     "--stdio",
+    --     "--ngProbeLocations",
+    --     "/Users/alex.belost/Projects/trisk/core/web/node_modules",
+    --     "--tsProbeLocations",
+    --     "/Users/alex.belost/Projects/trisk/core/web/node_modules",
+    --   },
+    --   root_dir = require("lspconfig.util").root_pattern("angular.json", "package.json"),
+    -- }
+
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+      virtual_text = {
+        spacing = 5,
+        severity_limit = "Warning",
       },
-      on_new_config = function(new_config)
-        new_config.cmd = {
-          "node",
-          "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib/node_modules/@angular/language-server/index.js",
-          "--ngProbeLocations",
-          "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
-          "--tsProbeLocations",
-          "/Users/alex.belost/.nvm/versions/node/v16.20.2/lib",
-          "--stdio",
-        }
-      end,
-      filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
-      root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
-    }
+      update_in_insert = true,
+    })
   end,
 }

@@ -8,7 +8,7 @@ local lazygit = Terminal:new { cmd = "lazygit", hidden = true, direction = "floa
 
 del("n", "<leader>b")
 
-map("n", "<leader>qr", function()
+map("n", "<leader>rs", function()
   require("persistence").load { last = true }
 end, { desc = "Restore session" })
 
@@ -16,19 +16,32 @@ map("n", "<leader>gg", function()
   lazygit:toggle()
 end, { noremap = true, silent = true, desc = "Lazygit toggle" })
 
-map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { noremap = true, silent = true, desc = "Tree toggle" })
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Tree toggle" })
 
-map("n", "<leader>bf", "<cmd>Neotree focus filesystem left reveal<cr>", { silent = true, desc = "Find current buffer" })
+-- map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { noremap = true, silent = true, desc = "Tree toggle" })
+--
+-- map("n", "<leader>bf", "<cmd>Neotree focus filesystem left reveal<cr>", { silent = true, desc = "Find current buffer" })
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save" })
-map("n", "<leader>cx", function()
+
+map("n", "<leader>bf", "<cmd>NvimTreeFindFile<CR>", { noremap = true, silent = true, desc = "Find Current Buffer" })
+
+map("n", "<leader>ba", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
 
+map("n", "<leader>bo", function()
+  require("nvchad.tabufline").closeAllBufs(false)
+end, { desc = "Close Other Buffers" })
+
 map("n", "<leader>cf", function()
   require("conform").format()
-end, { desc = "Format Buffer" })
+end, { desc = "Code Format" })
+
+map("n", "<leader>cl", function()
+  vim.lsp.buf.format()
+end, { desc = "Format Buffer with Lsp" })
 
 map("n", "<leader>qq", "<cmd>qa!<CR>", { desc = "Quit" })
 
@@ -70,7 +83,12 @@ map("t", "<C-f>", function()
 end, { desc = "Toogle Terminal Float" })
 
 -- Basic
-vim.keymap.set('n', '<leader>co', '<cmd>OrganizeImports<CR>', { noremap = true, silent = true, desc = "Organize Imports" })
+vim.keymap.set(
+  "n",
+  "<leader>co",
+  "<cmd>OrganizeImports<CR>",
+  { noremap = true, silent = true, desc = "Organize Imports" }
+)
 
 map("i", "jj", "<ESC>")
 map({ "n" }, "<ESC>", "<cmd>noh<cr>")

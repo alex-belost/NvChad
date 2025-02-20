@@ -1,21 +1,21 @@
 return {
-  {
-    "nvim-tree/nvim-tree.lua",
-    enabled = false,
-  },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   enabled = false,
+  -- },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    event = "VeryLazy",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-      -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-    },
-    opts = require "configs.neo-tree",
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   event = "VeryLazy",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons",
+  --     "MunifTanjim/nui.nvim",
+  --     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+  --   },
+  --   opts = require "configs.neo-tree",
+  -- },
 
   {
     "windwp/nvim-ts-autotag",
